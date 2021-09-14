@@ -1,0 +1,1 @@
+const text=document.querySelector(".text");text.innerHTML=text.textContent.replace(/\S/g,"<span>$&</span>");const element=document.querySelectorAll("span");for(let e=0;e<element.length;e++)element[e].style.animationDelay=.1*e+"s";

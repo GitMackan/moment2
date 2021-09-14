@@ -1,0 +1,27 @@
+/* Media-queries */ 
+
+/* Skärmar under 1500px */ 
+@media screen and (max-width: 1500px) {
+    .images {
+        grid-template-columns: 1fr;
+        gap: 2em;
+    }
+}
+
+/* Skärmar under 800px */ 
+@media screen and (max-width: 800px) {
+    .intro {
+        background-position: left;
+    }
+    .intro h1 {
+        font-size: 4em;
+        left: 10%;
+        top: 10%
+    }
+    .image img {
+        width: 500px;
+        height: 400px;
+        border-radius: 50%;
+        max-width: 95%;
+    }
+}
