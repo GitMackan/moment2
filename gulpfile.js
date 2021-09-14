@@ -13,13 +13,13 @@ const files = {
     imagePath: "src/images/*"
 }
 
-//HTML-task, kopiera html
+//HTML-task, kopiera html-filer till pub-mappen
 function copyHTML() {
     return src(files.htmlPath)
     .pipe(dest('pub'));
 }
 
-//CSS-task
+//CSS-task, slå ihop css-filer och minifiera. Kopiera sedan till pub-mappen
 function cssTask() {
     return src(files.cssPath)
     .pipe(concat('main.css'))
@@ -27,7 +27,7 @@ function cssTask() {
     .pipe(dest('pub/css'));
 }
 
-//JS-task
+//JS-task, slå ihop js-filer och minifiera. Kopiera sedan till pub-mappen
 function jsTask() {
     return src(files.jsPath)
     .pipe(concat('main.js'))
@@ -35,14 +35,14 @@ function jsTask() {
     .pipe(dest('pub/js'));
 }
 
-//Image-task
+//Image-task, komprimera bild-filer och kopiera till pub-mappen
 function imageTask() {
     return src(files.imagePath)
     .pipe(imagemin())
     .pipe(dest('pub/images'));
 }
 
-//Watch-task
+//Watch-task, håll koll på ändringar som görs i källkodsfiler och ändra i pub-mappen. Starta även upp browsersync.
 function watchTask() {
 
     browserSync.init({
