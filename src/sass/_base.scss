@@ -1,0 +1,40 @@
+// Variabler
+
+$primary-color: #d1e3eb;
+$primary-light: ligthen($primary-color, 15);
+$primary-dark: darken($primary-color, 15);
+$special-color: #02202c;
+$font: Roboto, sans-serif;
+$fontMed: 1.2em;
+$fontLarge: 2em;
+
+
+// Mixins
+
+@mixin normalFont {
+    font: {
+        size: $fontMed;
+        weight: 400;
+        family: $font;
+    }
+}
+
+@mixin bgColor ($primary-color, $change:null) {
+    background-color: $special-color;
+    @if $change == null {
+        background-color: darken($primary-color, 70);
+    } @else if $change == true {
+        background-color: lighten($primary-color, 20);
+    } @else {
+        background-color: $primary-color;
+    }
+}
+
+
+// Selector 
+
+%flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

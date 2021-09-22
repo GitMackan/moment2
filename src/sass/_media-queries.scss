@@ -1,0 +1,115 @@
+/* Media-queries */ 
+
+/* Skärmar under 1500px */ 
+@media screen and (max-width: 1500px) {
+    .images {
+        grid-template-columns: 1fr;
+        gap: 2em;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    header.sticky .logo {
+        left: 20px;
+    }
+    nav {
+        right: -50px;
+    }
+    nav ul li a {
+        font-size: 1em;
+    }
+}
+
+/* Skärmar under 800px */ 
+@media screen and (max-width: 800px) {
+    .info p {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .info h1 {
+        font-size: 1.5em;
+    }
+    .offer {
+        font-size: 0.8em;
+        text-align:center;
+    }
+    .images {
+        gap: 0;
+    }
+    .image img {
+        width: 80%;
+        height: auto;
+        border-radius: 50%;
+        max-width: 95%;
+    }
+    .information {
+        text-align: left;
+        width: 90%;
+        font-size: 1em;
+        line-height: 1.4em;
+        letter-spacing: 0.02em;
+        font-weight: 400;
+    }
+    .information img {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 0.5em;
+    }
+
+    // Header and navigation
+
+    header {
+        padding: 40px;
+    }
+    header.sticky .logo {
+        left: 40px;
+    }
+    header.sticky .banner {
+        opacity: 0;
+    }
+    nav ul {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+    nav.active ul {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 80px);
+        background: lighten($special-color, 15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        opacity: 1;
+        visibility: visible;
+    }
+    header.sticky nav ul {
+        opacity: 1;
+        visibility: visible;
+    }
+    nav ul li a {
+        font-size: $fontMed;
+    }
+    header.sticky .toggle {
+        position: fixed;
+        top: 15px;
+        right: 40px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        background: #d1e3eb url(/images/menu.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    header.sticky .toggle.active {
+        background: #fff url(/images/close.png);
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}

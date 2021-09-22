@@ -4,13 +4,16 @@ const terser = require('gulp-terser');
 const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
+const sass = require('gulp-sass')(require('sass'));
+const sourcemaps = require('gulp-sourcemaps');
 
 //Sökvägar
 const files = {
     htmlPath: "src/**/*.html",
     cssPath: "src/css/*.css",
     jsPath: "src/js/*.js",
-    imagePath: "src/images/*"
+    imagePath: "src/images/*",
+    sassPath: "src/sass/*.scss"
 }
 
 //HTML-task, kopiera html-filer till pub-mappen
@@ -25,6 +28,15 @@ function cssTask() {
     .pipe(concat('main.css'))
     .pipe(cssnano())
     .pipe(dest('pub/css'));
+}
+
+//Sass-task
+function sassTask() {
+    return src(files.sassPath)
+        .pipe(sourcemaps.init())
+        .pipe(sass().on("error", sass.logError))
+        .pipe(dest("pub/css"))
+        .pipe(browserSync.stream());
 }
 
 //JS-task, slå ihop js-filer och minifiera. Kopiera sedan till pub-mappen
@@ -49,10 +61,10 @@ function watchTask() {
         server: "./pub"
     });
 
-    watch([files.htmlPath, files.cssPath, files.jsPath, files.imagePath], parallel(copyHTML, cssTask, jsTask, imageTask)).on('change', browserSync.reload);
+    watch([files.htmlPath, files.cssPath, files.jsPath, files.imagePath, files.sassPath], parallel(copyHTML, cssTask, sassTask, jsTask, imageTask)).on('change', browserSync.reload);
 }
 
 exports.default = series(
-    parallel(copyHTML, cssTask, jsTask, imageTask), 
+    parallel(copyHTML, cssTask, jsTask, imageTask, sassTask), 
     watchTask
 );

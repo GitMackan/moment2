@@ -1,0 +1,106 @@
+/* Generella inställningar */ 
+
+body {
+    @include normalFont;
+    @include bgColor($primary-color, false);
+    max-width: 100vw;
+}
+
+/* Intro */ 
+
+.info {
+    @extend %flex;
+    min-height: 20vh;
+    flex-direction: column;
+    margin-top: 50vh;
+}
+.info h1 {
+    margin-bottom: .5em;
+    font-size: 2.5em;
+}
+
+// Main
+
+.offer {
+    @extend %flex;
+    min-height: 20vh;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    letter-spacing: 1.5px;
+    background: $special-color;
+    color: #fff;
+    text-align: center;
+    line-height: 2em;
+}
+.information {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    border-top: 1px solid $special-color;
+    border-bottom: 1px solid $special-color;
+    padding: 1em 0;
+    text-align: left;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.03em;
+    line-height: 1.6em;
+}
+.information h2 {
+    margin-bottom: 1em;
+    text-align: center;
+}
+.information img {
+    width: 500px;
+    float: left;
+    margin: 0.2em;
+    margin-right: .3em;
+}
+
+/* Bilder */
+
+.images {
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: 1fr 1fr;
+    @include bgColor($primary-color, true);
+}
+.image {
+    text-align: center;
+    color: darken($primary-color, 80);
+    padding: 2em 0;
+    background: $primary-color;
+    h3 {
+        margin-bottom: 1em;
+    }
+}
+.image img {
+    border-radius: 50%;
+}
+
+
+
+/* Footer */
+footer {
+    @extend %flex;
+    @include bgColor($primary-color);
+    height: 10vh;
+    color: white;
+}
+
+
+/* Keyframes */ 
+@keyframes animate {
+    0%
+    {
+        transform: translateY(10px);
+    }
+    50%
+    {
+        transform: translateY(-10px);
+    }
+    100%
+    {
+        transform: translateY(10px);
+    }
+}

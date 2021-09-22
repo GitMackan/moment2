@@ -1,0 +1,18 @@
+// Knappar
+
+.btn {
+    border: 1px solid $special-color;
+    padding: .5em;
+    background-color: $special-color;
+    width: 7em;
+    margin: 0 auto;
+    margin-top: 1em;
+    border-radius: 10px;
+}
+.btn a {
+    color: $primary-color;
+    text-decoration: none;
+}
+.btn a:hover {
+    text-decoration: underline;
+}
