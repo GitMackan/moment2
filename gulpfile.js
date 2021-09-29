@@ -1,4 +1,5 @@
 const {src, dest, parallel, series, watch} = require('gulp');
+const gulp = require('gulp');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
 const cssnano = require('gulp-cssnano');
@@ -6,6 +7,7 @@ const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
+const babel = require("gulp-babel");
 
 //Sökvägar
 const files = {
@@ -63,6 +65,15 @@ function watchTask() {
 
     watch([files.htmlPath, files.cssPath, files.jsPath, files.imagePath, files.sassPath], parallel(copyHTML, cssTask, sassTask, jsTask, imageTask)).on('change', browserSync.reload);
 }
+
+//Babel-task
+gulp.task("default", function () {
+    return gulp.src("src/app.js")
+      .pipe(babel({
+        presets: ["@babel/preset-env"]
+      }))
+      .pipe(gulp.dest("pub/js"));
+  });
 
 exports.default = series(
     parallel(copyHTML, cssTask, jsTask, imageTask, sassTask), 
