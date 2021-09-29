@@ -67,15 +67,15 @@ function watchTask() {
 }
 
 //Babel-task
-gulp.task("default", function () {
-    return gulp.src("src/app.js")
+function babelTask () {
+    return src(files.jsPath)
       .pipe(babel({
         presets: ["@babel/preset-env"]
       }))
-      .pipe(gulp.dest("pub/js"));
-  });
+      .pipe(dest("pub/js"));
+  };
 
 exports.default = series(
-    parallel(copyHTML, cssTask, jsTask, imageTask, sassTask), 
+    parallel(copyHTML, cssTask, jsTask, imageTask, sassTask, babelTask), 
     watchTask
 );

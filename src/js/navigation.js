@@ -13,3 +13,13 @@ document.querySelector('.toggle').onclick = function(){
     this.classList.toggle('active');
     navigation.classList.toggle('active');
 };
+
+let properties = ['Marcus', 'Nygård', 'Februari'];
+
+function myFunc (firstName, lastName, birthMonth) {
+    first = firstName;
+    last = lastName;
+    month = birthMonth;
+    console.log(first, last, 'är född i månaden:', month);
+}
+myFunc(...properties);
